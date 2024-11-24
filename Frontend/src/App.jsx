@@ -3,18 +3,27 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Navbar from './components/Navbar'
 import MainPage from './components/MainPage'
+import { useEffect } from 'react';
+import { createContext, useContext } from 'react'
 import './App.css'
 
 function App() {
   const [navVisible, setNavVisible] = useState(true);
 
+  // const NavbarContext = createContext();
+  // const useNavbarContext = () => useContext(NavbarContext);
+
   function toggleNav() {
-    setNavVisible(!navVisible);
+    setNavVisible(prevVisible => !prevVisible);
+    console.log(navVisible);
   }
+  
   return (
     <div className='main'>
-      {navVisible && <Navbar toggleNav={toggleNav}/>}
-      <MainPage />
+      {/* <NavbarContext.Provider value={{navVisible, toggleNav}} > */}
+        {navVisible && <Navbar toggleNav={toggleNav} navVisible={navVisible}/>}
+      {/* </NavbarContext.Provider> */}
+      <MainPage toggleNav={toggleNav} navVisible={navVisible}/>
     </div>
   )
 }
