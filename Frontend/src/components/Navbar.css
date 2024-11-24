@@ -1,0 +1,26 @@
+.navb {
+    background-color: #130c20;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+}
+
+.navb > .toggleButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navb > .toggleButtons > button {
+    background-color: #130c20;
+    color: white;
+    border: none;
+    padding: 10px 11px 10px 11px;
+    margin: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.navb > .toggleButtons > button:hover {
+    background-color: #4F2683;
+    border-radius: 10px;
+}
+/* b99a732739 */
