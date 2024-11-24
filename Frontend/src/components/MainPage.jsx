@@ -20,7 +20,7 @@ const MainPage = ({toggleNav, navVisible}) => {
               </button>
             </div>
           }
-          <h1>Yimin Yang</h1>
+          <h1>YangGPT</h1>
         </div>
         <button className='profilePics'>
           <img src={yang} alt="" className='profilePics' />
