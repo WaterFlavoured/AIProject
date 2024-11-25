@@ -1,6 +1,7 @@
 import React from 'react'
 import './MainPage.css'
 import yang from '../assets/yiminyang.png'
+import TextArea from './TextArea'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import { faSquareCaretRight } from '@fortawesome/free-regular-svg-icons'
@@ -8,6 +9,7 @@ import { faSquareCaretRight } from '@fortawesome/free-regular-svg-icons'
 const MainPage = ({toggleNav, navVisible}) => {
   return (
     <div className={`${!navVisible ? 'mainPageFull' : 'mainPage'}`}>
+      {/* Mini navbar */}
       <nav>
         <div className='logo'>
           {!navVisible && 
@@ -26,6 +28,11 @@ const MainPage = ({toggleNav, navVisible}) => {
           <img src={yang} alt="" className='profilePics' />
         </button>
       </nav>
+
+      {/* Text area stuff */}
+      <TextArea />
+      
+      {/* Textbox */}
     </div>
   )
 }
