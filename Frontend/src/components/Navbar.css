@@ -1,0 +1,71 @@
+.navb {
+    background-color: #130c20;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+}
+.navb-animatedleft {
+  animation: slideInFromLeft 0.5s ease;
+}
+
+.navb-animatedright {
+  animation: slideInFromRight 0.5s ease;
+}
+
+.navb > .toggleButtons {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* This is super fucking scuffed LOL */
+.navb > .toggleButtons > .leftButton {
+  background-color: #130c20;
+  color: white;
+  border: none;
+  padding: 10px 12px 10px 12px;
+  margin: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.navb > .toggleButtons > .leftButton:hover {
+  background-color: #4F2683;
+  border-radius: 10px;
+}
+
+.navb > .toggleButtons > .newButton {
+  background-color: #130c20;
+  color: white;
+  border: none;
+  padding: 10px 11px 10px 12px;
+  margin: 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.navb > .toggleButtons > .newButton:hover {
+  background-color: #4F2683;
+  border-radius: 10px;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+}
