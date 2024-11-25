@@ -15,7 +15,6 @@ function App() {
 
   function toggleNav() {
     setNavVisible(prevVisible => !prevVisible);
-    console.log(navVisible);
   }
   
   return (
