@@ -1,0 +1,18 @@
+.textBubbleYang {
+    background-color: #3e2769;
+    border-radius: 30px;
+    padding: 15px;
+    margin: 10px 0;
+    display: inline-block;
+    text-align: center;
+    max-width: 40%;
+}
+.textBubbleUser {
+    background-color: #464747;
+    border-radius: 30px;
+    padding: 15px;
+    margin: 10px 0;
+    display: inline-block;
+    text-align: center;
+    max-width: 50%;
+}
