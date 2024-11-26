@@ -8,21 +8,36 @@ import { createContext, useContext } from 'react'
 import './App.css'
 
 function App() {
+  const [chats, setChats] = useState([]);
+  const [currentChatId, setCurrentChatId] = useState(null);
   const [navVisible, setNavVisible] = useState(true);
-
-  // const NavbarContext = createContext();
-  // const useNavbarContext = () => useContext(NavbarContext);
+  const NavbarContext = createContext();
+  const useNavbarContext = () => useContext(NavbarContext);
+  
 
   function toggleNav() {
-    setNavVisible(prevVisible => !prevVisible);
+    setNavVisible((prevVisible) => !prevVisible);
   }
   
   return (
     <div className='main'>
       {/* <NavbarContext.Provider value={{navVisible, toggleNav}} > */}
-        {navVisible && <Navbar toggleNav={toggleNav} navVisible={navVisible}/>}
+        {navVisible && 
+        <Navbar 
+        toggleNav={toggleNav} 
+        navVisible={navVisible}
+        chats={chats}
+        setChats={setChats}
+        currentChatId={currentChatId}
+        setCurrentChatId={setCurrentChatId}
+        />}
       {/* </NavbarContext.Provider> */}
-      <MainPage toggleNav={toggleNav} navVisible={navVisible}/>
+      <MainPage 
+      toggleNav={toggleNav} 
+      navVisible={navVisible}
+      chats={chats}
+      currentChatId={currentChatId}
+      />
     </div>
   )
 }

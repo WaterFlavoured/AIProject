@@ -1,12 +1,14 @@
 import React from 'react'
 import './MainPage.css'
 import yang from '../assets/yiminyang.png'
-import TextArea from './TextArea'
+//import TextArea from './TextArea'
+import ChatApp from './ChatApp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import { faSquareCaretRight } from '@fortawesome/free-regular-svg-icons'
 
-const MainPage = ({toggleNav, navVisible}) => {
+const MainPage = ({toggleNav, navVisible, chats, currentChatId}) => {
+  const currentChat = chats.find(chat => chat.id === currentChatId);
   return (
     <div className={`${!navVisible ? 'mainPageFull' : 'mainPage'}`}>
       {/* Mini navbar */}
@@ -29,10 +31,18 @@ const MainPage = ({toggleNav, navVisible}) => {
         </button>
       </nav>
 
-      {/* Text area stuff */}
-      <TextArea />
-      
-      {/* Textbox */}
+      {/* Test Area Stuff*/}
+      {/*<TextArea />*/}
+      {/* Textbox*/}
+
+      {/* Main Content */}
+      <div className="mainContent">
+        {currentChat ? (
+          <ChatApp chat={currentChat} />
+        ) : (
+          <h2>Select a chat or create a new one</h2>
+        )}
+      </div>
     </div>
   )
 }
