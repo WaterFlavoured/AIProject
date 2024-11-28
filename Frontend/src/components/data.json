@@ -1,0 +1,21 @@
+[
+    [
+        {
+            "id": 1,
+            "who": "User",
+            "text": "Hello"
+        },
+        {
+            "id": 2,
+            "who": "Bot",
+            "text": "Hello, how can I help you?"
+        }
+    ],
+    [
+        {
+            "id": 1,
+            "who": "Bot",
+            "text": "Hello, how can I help you?"
+        }
+    ]
+]
