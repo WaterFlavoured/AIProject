@@ -26,7 +26,7 @@ const Navbar = ({ navVisible, toggleNav, chats, setChats, currentChatId, setCurr
       const newChat = {
         id: newChatId,
         name: `Chat #${newChatId}`,
-        messages: [`Welcome to YangGPT. How can I help you?`],
+        messages: [{ text: 'Hi! I\'m YangGPT, a text-based AI model trained on the GPT-3 architecture. I can generate text based on the prompts you give me. Try typing something in the text box below and see what I come up with!', who: 'DrYangGPT' }],
       };
       setChats((prevChats) => [...prevChats, newChat]);
       setCurrentChatId(newChatId); // Automatically select the new chat

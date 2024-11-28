@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import { faSquareCaretRight } from '@fortawesome/free-regular-svg-icons'
 
-const MainPage = ({toggleNav, navVisible, chats, currentChatId}) => {
+const MainPage = ({ toggleNav, navVisible, chats, currentChatId }) => {
   const currentChat = chats.find(chat => chat.id === currentChatId);
   return (
     <div className={`${!navVisible ? 'mainPageFull' : 'mainPage'}`}>
@@ -30,10 +30,6 @@ const MainPage = ({toggleNav, navVisible, chats, currentChatId}) => {
           <img src={yang} alt="" className='profilePics' />
         </button>
       </nav>
-
-      {/* Test Area Stuff*/}
-      {/*<TextArea />*/}
-      {/* Textbox*/}
 
       {/* Main Content */}
       <div className="mainContent">

@@ -4,15 +4,15 @@
     padding: 15px;
     margin: 10px 0;
     display: inline-block;
-    text-align: center;
-    max-width: 40%;
+    text-align: left;
+    max-width: 75%;
 }
 .textBubbleUser {
-    background-color: #464747;
+    background-color: #8F55E0;
     border-radius: 30px;
     padding: 15px;
     margin: 10px 0;
     display: inline-block;
-    text-align: center;
-    max-width: 50%;
+    text-align: left;
+    max-width: 75%;
 }

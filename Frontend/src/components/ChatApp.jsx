@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import './ChatApp.css';
+import TextBubble from './TextBubble';  // Import the TextBubble component
 
 const ChatApp = ({ chat }) => {
   const [message, setMessage] = useState('');
-
-  // Function to handle sending a new message (you'll need to handle this in your state)
+ 
+ 
+  // Function to handle sending a new message
   const handleSendMessage = () => {
     if (message.trim() !== '') {
-      chat.messages.push(message);  // You may want to manage state properly here
+      chat.messages.push({ text: message, who: 'User' });  // Add the user's message with 'User' label
       setMessage('');  // Reset the input field after sending the message
     }
   };
+
 
   return (
     <div className="chatApp">
@@ -22,17 +25,18 @@ const ChatApp = ({ chat }) => {
       <div className="messageList">
         {chat.messages.map((msg, index) => (
           <div key={index} className="message">
-            {msg}
+            {/* Use the TextBubble component for displaying the message */}
+            <TextBubble text={msg.text} who={msg.who} />
           </div>
         ))}
       </div>
 
       {/* Message Input */}
       <div className="messageInput">
-        <input 
-          type="text" 
-          value={message} 
-          onChange={(e) => setMessage(e.target.value)} 
+        <input
+          type="text"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           placeholder="Type a message..."
         />
         <button onClick={handleSendMessage}>Send</button>
