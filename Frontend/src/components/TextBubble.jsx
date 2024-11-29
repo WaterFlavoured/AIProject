@@ -1,6 +1,6 @@
 import React from 'react'
 import './TextBubble.css'
-const TextBubble = ({key, text, who}) => {
+const TextBubble = ({text, who}) => {
   return (
     <div>
         {who === 'DrYangGPT' ? (

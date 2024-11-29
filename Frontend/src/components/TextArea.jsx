@@ -66,10 +66,10 @@ const TextArea = () => {
     ]
     return (
         <div className='textArea'>
-                {text1.map((text) => (
-                        <div key={text.id} className={text.who === 'DrYangGPT' ? 'textBubbleLeft' : 'textBubbleRight'}>
-                                <TextBubble text={text.text} who={text.who} />
-                        </div>
+            {text1.map((text) => (
+                <div key={text.id} className={text.who === 'DrYangGPT' ? 'textBubbleLeft' : 'textBubbleRight'}>
+                    <TextBubble text={text.text} who={text.who} />
+                </div>
             ))}
         </div>
     )

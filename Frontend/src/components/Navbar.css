@@ -69,3 +69,27 @@
     opacity: 1;
   }
 }
+
+.chatList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Spacing between chat items */
+}
+
+/* Individual chat item */
+.chatItem {
+  font-size: 18px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #4F2683;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chatItem:hover {
+  background-color: #565759;
+}
