@@ -34,7 +34,7 @@ const MainPage = ({ toggleNav, navVisible, chats, currentChatId }) => {
       {/* Main Content */}
       <div className="mainContent">
         {currentChat ? (
-          <ChatApp chat={currentChat} />
+          <ChatApp chat={currentChat}/>
         ) : (
           <h2>Select a chat or create a new one</h2>
         )}

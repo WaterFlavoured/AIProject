@@ -23,22 +23,28 @@
 
 .messageInput {
   display: flex;
-  justify-content: space-between;
-  margin-top: auto; 
+  position: fixed;
+  bottom: 4%;
+  left: auto;
+  width: 85%;
 }
 
 .messageInput input {
   color: black;
   width: 80%;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px 0 0 10px;
   border: 1px solid #ffffff;
 }
 
+.messageInput input:focus {
+  outline: none;
+}
+
 .messageInput button {
-  width: 15%;
+  width: 10%;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 0 10px 10px 0;
   background-color: #4F2683;
   color: rgb(255, 255, 255);
   border: none;
@@ -47,4 +53,16 @@
 
 .messageInput button:hover {
   background-color: #3c1d65;
+}
+
+.textBubbleRight {
+  margin-left: auto;
+  margin-right: 10px;
+  text-align: right;
+}
+
+.textBubbleLeft {
+  margin-right: auto;
+  margin-left: 10px;
+  text-align: left;
 }

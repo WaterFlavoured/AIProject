@@ -19,6 +19,7 @@ nav {
   display: flex;
   flex-direction: column;
   width: 80%;
+  height: 100vh;
   background-color: #201436;
   color: white;
 }
@@ -67,6 +68,8 @@ nav {
 }
 
 .mainContent {
-  overflow-y: scroll;
   height: 80%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #4F2683 #201436;
 }

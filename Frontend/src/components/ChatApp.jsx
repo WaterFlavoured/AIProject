@@ -11,6 +11,7 @@ const ChatApp = ({ chat }) => {
     if (message.trim() !== '') {
       chat.messages.push({ text: message, who: 'User' });  // Add the user's message with 'User' label
       setMessage('');  // Reset the input field after sending the message
+      console.log(chat);
     }
   };
 
@@ -24,7 +25,7 @@ const ChatApp = ({ chat }) => {
       {/* Displaying messages */}
       <div className="messageList">
         {chat.messages.map((msg, index) => (
-          <div key={index} className="message">
+          <div key={index} className={msg.who === 'DrYangGPT' ? 'textBubbleLeft' : 'textBubbleRight'}>
             {/* Use the TextBubble component for displaying the message */}
             <TextBubble text={msg.text} who={msg.who} />
           </div>
@@ -32,15 +33,15 @@ const ChatApp = ({ chat }) => {
       </div>
 
       {/* Message Input */}
-      <div className="messageInput">
+      <form className="messageInput" onSubmit={(e) => { e.preventDefault(); handleSendMessage(); }}>
         <input
           type="text"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Type a message..."
         />
-        <button onClick={handleSendMessage}>Send</button>
-      </div>
+        <button type="submit">Send</button>
+      </form>
     </div>
   );
 };

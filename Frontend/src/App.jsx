@@ -30,7 +30,8 @@ function App() {
         setChats={setChats}
         currentChatId={currentChatId}
         setCurrentChatId={setCurrentChatId}
-        />}
+        />
+        }
       {/* </NavbarContext.Provider> */}
       <MainPage 
       toggleNav={toggleNav} 
