@@ -2,6 +2,7 @@ import React from 'react'
 import './TextArea.css'
 import TextBubble from './TextBubble'
 const TextArea = () => {
+    // Simulated conversation
     const text1 = [
         {
             id: 1,
@@ -65,9 +66,12 @@ const TextArea = () => {
         }
     ]
     return (
+        //Container for textbubbles
         <div className='textArea'>
+             {/* Display each message from text1 array */}
             {text1.map((text) => (
                 <div key={text.id} className={text.who === 'DrYangGPT' ? 'textBubbleLeft' : 'textBubbleRight'}>
+                    {/* Giving TextBubble text and sender information */}
                     <TextBubble text={text.text} who={text.who} />
                 </div>
             ))}
