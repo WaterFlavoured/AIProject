@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
+from flask_socketio import SocketIO, emit
 from transformers import T5Tokenizer, T5ForConditionalGeneration
 import re
-from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
+socketio = SocketIO(app, cors_allowed_origins="*")  # Enable SocketIO with CORS support
 
 class SimpleChatBot:
     def __init__(self, model_name="google/flan-t5-large"):
@@ -38,7 +40,6 @@ class SimpleChatBot:
         if math_result:
             return math_result
 
-        # Your detailed prompts preserved here
         prompt = (
             f"You are a conversational AI. Engage with the user and answer their questions as clearly and concisely as possible.\n"
             f"You can have conversations about day-to-day tasks.\n"
@@ -50,20 +51,26 @@ class SimpleChatBot:
             f"AI:"
         )
 
-        inputs = self.tokenizer(prompt, return_tensors="pt", padding=True, truncation=True)
+        try:
+            inputs = self.tokenizer(prompt, return_tensors="pt", padding=True, truncation=True)
 
-        outputs = self.model.generate(
-            inputs.input_ids,
-            max_new_tokens=100,
-            do_sample=True,
-            temperature=0.7,
-            top_p=0.9,
-            num_beams=3
-        )
+            outputs = self.model.generate(
+                inputs.input_ids,
+                max_new_tokens=100,
+                do_sample=True,
+                temperature=0.7,
+                top_p=0.9,
+                num_beams=3
+            )
 
-        response = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-        return response
-
+            response = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+        except Exception as e:
+            return f"Error in processing the request: {str(e)}"
+        
+        if response:  # Ensure response is not empty
+            return response
+        else:
+            return "Sorry, I could not understand your request."
 
 chatbot = SimpleChatBot()
 
@@ -73,12 +80,24 @@ def chat():
     user_input = data.get("input", "")
     try:
         response = chatbot.get_response(user_input)
-        return jsonify({"response": response})
+        return jsonify({"who": "bot", "message": response})  # Return JSON with `who` and `message`
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"who": "bot", "message": f"Error: {str(e)}"}), 500
+
+
+@socketio.on('message')
+def handle_message(data):
+    """
+    Handles incoming messages over the WebSocket.
+    """
+    user_input = data.get('input', '')
+    try:
+        response = chatbot.get_response(user_input)
+        emit('response', {'who': 'bot', 'message': response})  # Send the response back as `who` and `message`
+    except Exception as e:
+        emit('error', {'who': 'bot', 'message': f"Error: {str(e)}"})
+
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
-        
+    socketio.run(app, debug=True)
