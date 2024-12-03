@@ -21,7 +21,9 @@ router.post('/post/:index', async (req, res) => {
       },
     };
 
-    const result = await Model.updateOne({}, updateQuery); // Updates the data in the database
+    const start = Date.now();
+    const result = await Model.updateOne({}, updateQuery);
+    console.log(`Query Time: ${Date.now() - start}ms`);
 
     if (result.modifiedCount > 0) {
       res.status(200).json({ message: 'Data added successfully.' });
@@ -39,20 +41,6 @@ router.patch('/delete/:index', async (req, res) => {
     const parsedIndex = parseInt(req.params.index); // Parse the index from the request parameters
     try {
         const initialDocument = await Model.findOne({});
-
-        if (!initialDocument) {
-          return res.status(404).json({ error: 'No document found.' });
-        }
-    
-        // Ensure that the data field exists and is an array
-        if (!Array.isArray(initialDocument.data)) {
-          return res.status(400).json({ error: 'The "data" field is not an array.' });
-        }
-    
-        // Ensure that the specific index is valid (it should be an array)
-        if (!Array.isArray(initialDocument.data[parsedIndex])) {
-          return res.status(400).json({ error: `Index ${parsedIndex} is not a valid array.` });
-        }
     
         // Clear the sub-array at the given index
         initialDocument.data[parsedIndex] = []; // Set the sub-array to an empty array
@@ -68,8 +56,10 @@ router.patch('/delete/:index', async (req, res) => {
 
 //Get all Method
 router.get('/getAll', async (req, res) => {
+    const startTime = Date.now();
     try {
-        const data = await Model.find({}, '-_id');
+        const data = await Model.find({}, '-_id -__v'); 
+        console.log(`Query time: ${Date.now() - startTime}ms`);
         if (data.length === 0) {
             return res.status(404).json({ message: 'No data found.' });
         }

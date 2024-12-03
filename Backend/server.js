@@ -2,7 +2,6 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const server = require('http').createServer(app);
 const routes = require('./app/routes/routes');
 require('dotenv').config(); // Allows for environment variables
 
@@ -11,7 +10,7 @@ app.use(express.json());
 
 // Connects to Cloud Database (MongoDB Atlas)
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri);
+mongoose.connect(process.env.ATLAS_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 // Route
@@ -25,5 +24,8 @@ db.once('connected', () => {
   console.log('Connected to MongoDB');
 });
 
+module.exports = app;
+
+// const port = process.env.PORT || 3000;
 // Tells user the server is running
-server.listen(3000, () => console.log('Server is running on http://localhost:3000'));
+// server.listen(port, () => console.log(`Server is running on http://localhost:${port}`));
