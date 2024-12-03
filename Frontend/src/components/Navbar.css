@@ -1,23 +1,28 @@
+/* Navbar stying */
 .navb {
     background-color: #130c20;
     width: 20%;
     display: flex;
     flex-direction: column;
 }
+
+/* Animation of opening NavBar */
 .navb-animatedleft {
   animation: slideInFromLeft 0.5s ease;
 }
 
+/* Animation of hiding nav bar */
 .navb-animatedright {
   animation: slideInFromRight 0.5s ease;
 }
 
+/* Styling for navbar toggle button container */
 .navb > .toggleButtons {
     display: flex;
     justify-content: space-between;
 }
 
-/* This is super fucking scuffed LOL */
+/* Stying for toggle button */
 .navb > .toggleButtons > .leftButton {
   background-color: #130c20;
   color: white;
@@ -28,11 +33,13 @@
   cursor: pointer;
 }
 
+/* Creating hover effect for toggle button */
 .navb > .toggleButtons > .leftButton:hover {
   background-color: #4F2683;
   border-radius: 10px;
 }
 
+/* Styling for new chat button */
 .navb > .toggleButtons > .newButton {
   background-color: #130c20;
   color: white;
@@ -43,11 +50,13 @@
   cursor: pointer;
 }
 
+/* Creating hover effect for new chat button */
 .navb > .toggleButtons > .newButton:hover {
   background-color: #4F2683;
   border-radius: 10px;
 }
 
+/* Keyframe animation for sliding in from the left */
 @keyframes slideInFromLeft {
   from {
     transform: translateX(-100%);
@@ -59,6 +68,8 @@
   }
 }
 
+
+/* Keyframe animation for sliding in from the right */
 @keyframes slideInFromRight {
   from {
     transform: translateX(0%);
@@ -70,13 +81,14 @@
   }
 }
 
+/* Styling for Chatlist container */
 .chatList {
   display: flex;
   flex-direction: column;
   gap: 15px; /* Spacing between chat items */
 }
 
-/* Individual chat item */
+/* Styling for individual chat blocks */
 .chatItem {
   font-size: 18px;
   padding: 20px;
@@ -90,6 +102,7 @@
   justify-content: space-between;
 }
 
+/* Creating hover effect for selecting chat */
 .chatItem:hover {
   background-color: #565759;
 }

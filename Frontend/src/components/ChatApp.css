@@ -1,50 +1,79 @@
+/* Chat application container */
 .chatApp {
   padding: 20px;
   border-radius: 10px;
   background-color: #201436;
   height: 80%;
 }
-  
+
+/* Header styling */
 .chatHeader {
   margin-bottom: 20px;
 }
 
+/* Continer for all messages */
 .messageList {
   flex-grow: 1;
   overflow-y: auto;
   margin-bottom: 20px;
 }
 
+/* Container for singular message */
 .message {
   padding: 8px;
   margin-bottom: 10px;
   border-radius: 5px;
 }
 
+/* Styling for user text-input form */
 .messageInput {
   display: flex;
-  justify-content: space-between;
-  margin-top: auto; 
+  position: fixed;
+  bottom: 4%;
+  left: auto;
+  width: 85%;
 }
 
+/* Styling for user-input text */
 .messageInput input {
   color: black;
   width: 80%;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 10px 0 0 10px;
   border: 1px solid #ffffff;
 }
 
+/* Removing outline from input form */
+.messageInput input:focus {
+  outline: none;
+}
+
+/* Styling for button sending input */
 .messageInput button {
-  width: 15%;
+  width: 10%;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 0 10px 10px 0;
   background-color: #4F2683;
   color: rgb(255, 255, 255);
   border: none;
   cursor: pointer;
 }
 
+/* Creating hover effect on button */
 .messageInput button:hover {
   background-color: #3c1d65;
+}
+
+/* Styling textbubble */
+.textBubbleRight {
+  margin-left: auto;
+  margin-right: 10px;
+  text-align: right;
+}
+
+/* Styling textbubble */
+.textBubbleLeft {
+  margin-right: auto;
+  margin-left: 10px;
+  text-align: left;
 }
