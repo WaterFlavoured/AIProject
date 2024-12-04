@@ -18,6 +18,7 @@ function App() {
   // Function for toggling navbar visibility
   function toggleNav() {
     setNavVisible((prevVisible) => !prevVisible); // Inverting current state
+    console.log(chats)
   }
   
   return (
@@ -39,6 +40,7 @@ function App() {
       navVisible={navVisible} // Passing visibility state to MainPage
       chats={chats} // Passing list of chats to MainPage
       currentChatId={currentChatId} // Passing currnt chat ID to MainPage
+      setChats={setChats} // Passing function to update chats to MainPage
       />
     </div>
   )

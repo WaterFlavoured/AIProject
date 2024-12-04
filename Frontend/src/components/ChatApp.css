@@ -13,6 +13,8 @@
 
 /* Continer for all messages */
 .messageList {
+  display: flex; /* Enable flexbox */
+  flex-direction: column; /* Ensures vertical stacking of messages */
   flex-grow: 1;
   overflow-y: auto;
   margin-bottom: 20px;
@@ -20,6 +22,8 @@
 
 /* Container for singular message */
 .message {
+  display: flex; /* Enable flexbox */
+  flex-direction: column;
   padding: 8px;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -66,14 +70,26 @@
 
 /* Styling textbubble */
 .textBubbleRight {
+  /* Check if width is set to 100%, adjust accordingly */
+  width: auto;  /* Set width to auto or a more reasonable value */
+  max-width: 75%;  /* Optional, for limiting width */
   margin-left: auto;
   margin-right: 10px;
   text-align: right;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  background-color: #8F55E0; /* Example background color */
 }
 
-/* Styling textbubble */
 .textBubbleLeft {
+  background-color: #3e2769; /* For debugging */
+  max-width: 75%;
   margin-right: auto;
   margin-left: 10px;
   text-align: left;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
 }
+
