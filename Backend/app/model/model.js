@@ -1,9 +1,18 @@
 const mongoose = require('mongoose');
 
-// Model for the data to be inserted into database
-const dataSchema = new mongoose.Schema({
-    data: { // Verifies that the data is an array of arrays of objects
-        type: [[{
+// Updated schema to match the new data structure
+const chatSchema = new mongoose.Schema({
+    id: {
+        type: Number,
+        required: true,
+        unique: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    messages: [
+        {
             id: {
                 type: Number,
                 required: true
@@ -12,12 +21,13 @@ const dataSchema = new mongoose.Schema({
                 type: String,
                 required: true
             },
-            message: {
+            text: {
                 type: String,
                 required: true
             }
-        }]],
-    }
+        }
+    ]
 });
-const Message = mongoose.model('Data', dataSchema, 'messages'); // Model name is 'Data' and collection name is 'messages'
-module.exports = Message;
+
+const Chat = mongoose.model('Chat', chatSchema, 'chats');
+module.exports = Chat;

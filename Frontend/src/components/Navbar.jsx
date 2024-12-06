@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import { faSquareCaretLeft } from '@fortawesome/free-regular-svg-icons'
 import { useEffect } from 'react';
+import axios from 'axios';
 // import { useNavbarContext } from '../App.jsx'
 const Navbar = ({ navVisible, toggleNav, chats, setChats, currentChatId, setCurrentChatId }) => {
   useEffect(() => {
@@ -17,6 +18,7 @@ const Navbar = ({ navVisible, toggleNav, chats, setChats, currentChatId, setCurr
   const handleNewChat = () => {
     if (chats.length < 10) {
       const newChatId = chats.length + 1;
+  
       const newChat = { 
         id: newChatId, 
         name: `Chat#${newChatId}`,
@@ -28,16 +30,38 @@ const Navbar = ({ navVisible, toggleNav, chats, setChats, currentChatId, setCurr
           }
         ]
       };
-      setChats((prevChats) => [...prevChats, newChat]);
-      setCurrentChatId(newChatId);
+  
+      setChats((prevChats) => [...prevChats, newChat]);  // Add new chat to state
+      setCurrentChatId(newChatId);  // Set the current chat to the newly created chat
     } else {
       alert('You can only create up to 10 chats!');
     }
   };
+  
+  
 
   const handleSelectChat = (chatId) => {
     setCurrentChatId(chatId);
   };
+
+  const removeChat = async(chatId) => {
+    try {
+      const response = await axios.patch(`http://localhost:3000/api/v1/delete/${chatId}`);
+      console.log(response.data);
+      if (response.data) {
+        setChats((prevChats) => {
+          const updatedChats = prevChats.map((chat) => 
+            chat.id === chatId ? { ...chat, messages: [] } : chat
+          );
+          return updatedChats;
+        });
+      } else {
+        console.error('Failed to remove chat');
+      }
+    }catch (error) {
+      console.error('Error removing chat:', error);
+    }
+  }
 
   return (
     <div className="navb">
@@ -57,11 +81,20 @@ const Navbar = ({ navVisible, toggleNav, chats, setChats, currentChatId, setCurr
             onClick={() => handleSelectChat(chat.id)}
           >
             {chat.name}
+            <button
+              onClick={(e) => {
+                e.stopPropagation(); // Prevents click from triggering chat selection
+                removeChat(chat.id); // Pass the correct chat.id to remove it
+              }}
+            >
+              Remove
+            </button>
           </div>
         ))}
       </div>
     </div>
   );
+  
 };
 
 export default Navbar
